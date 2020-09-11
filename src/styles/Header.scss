@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &__link {
+      font-size: 2.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+  }
+
+  &-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &__container {
+      display: flex;
+      margin-block-start: 0;
+      padding-inline-start: 0;
+      list-style: none;
+    }
+
+    &__item {
+      padding: 1.6rem 2rem;
+      font-size: 1.6em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    &__link {
+      color: #333;
+    }
+  }
+}

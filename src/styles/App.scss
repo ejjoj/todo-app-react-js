@@ -1,0 +1,29 @@
+.main {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.link {
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: 112.5%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: cadetblue;
+    transition: .3s;
+  }
+
+  &.active:before {
+    width: 90%;
+  }
+
+  &:hover {
+    &:before {
+      width: 90%;
+    }
+  }
+}
