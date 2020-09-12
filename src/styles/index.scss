@@ -1,9 +1,14 @@
 html {
   font-size: 62.5%;
+
+  @media (max-width: 1440px) {
+    font-size: 50%;
+  }
 }
 
 html body {
   color: #333;
+  background-color: #ddd;
   font-family: 'Kumbh Sans', sans-serif;
 }
 
