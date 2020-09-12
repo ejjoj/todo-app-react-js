@@ -41,7 +41,7 @@ class App extends Component {
       <Router>
         <div className="row main">
           <Header items={this.state.menuItems} />
-          <Pages items={this.state.menuItems}/>
+          <Pages />
         </div>
       </Router>
     );
