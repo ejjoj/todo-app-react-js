@@ -32,3 +32,23 @@
     }
   }
 }
+
+.circle {
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  top: 0;
+  left: 1.5rem;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: cadetblue;
+  z-index: -1;
+
+  &-different {
+    left: 50%;
+  }
+}
+
+.fab {
+  font-size: 10em;
+}
