@@ -1,6 +1,7 @@
 .main,
 .home,
-.register {
+.register,
+.login {
   margin: 0 auto;
   max-width: 1440px;
 
@@ -14,7 +15,8 @@
 }
 
 .home,
-.register {
+.register,
+.login {
   width: 100%;
 }
 
