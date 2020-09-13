@@ -177,6 +177,10 @@ class RegisterPage extends Component {
       return <Redirect to="/login" />;
     }
 
+    if (sessionStorage.getItem("userData")) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="row register">
         <div className="col-12 register-capabilities">

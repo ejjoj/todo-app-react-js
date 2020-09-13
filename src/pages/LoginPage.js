@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 import "../styles/LoginPage.scss";
 
@@ -17,6 +18,8 @@ export default class LoginPage extends Component {
     afterFetch:
       "Nie znaleziono użytkownika o podanej nazwie użytkownika lub haśle. Spóbuj ponownie!",
   };
+
+  API = "http://localhost/php_rest_todoapp/api/user/login.php";
 
   errorMessages = [];
 
@@ -39,10 +42,48 @@ export default class LoginPage extends Component {
     else return true;
   }
 
+  login(callback, data) {
+    if (data) {
+      const params = {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "*",
+        },
+      };
+
+      fetch(this.API, params)
+        .then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.success === 1) {
+            callback(responseJson.token);
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.validation()) {
-      console.log("test");
+      const data = {
+        login: this.state.username,
+        password: this.state.password,
+      };
+
+      this.login((token) => {
+        sessionStorage.setItem("userData", token);
+        this.setState({
+          username: "",
+          password: "",
+          redirect: true,
+          error: false,
+          errors: [],
+        });
+      }, data);
     } else {
       this.setState({
         error: true,
@@ -52,6 +93,15 @@ export default class LoginPage extends Component {
   };
 
   render() {
+    if (this.state.redirect) {
+      alert("Logowanie przebiegło pomyślnie!");
+      return <Redirect to="/my-account" />;
+    }
+
+    if (sessionStorage.getItem("userData")) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="row login">
         <div className="col-md-6 login-container login-container__left">
